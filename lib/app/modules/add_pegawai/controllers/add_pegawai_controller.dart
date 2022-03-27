@@ -30,6 +30,8 @@ class AddPegawaiController extends GetxController {
             "email": emailController.text,
             "createdAt": DateTime.now().toIso8601String(),
           });
+
+          await userCredential.user?.sendEmailVerification();
         }
       } on FirebaseAuthException catch (e) {
         print(e.code);
